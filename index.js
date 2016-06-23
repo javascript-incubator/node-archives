@@ -6,7 +6,11 @@ server.use(middlewares)
 /* Routers here */
 server.use('/gameofthrones', got)
 
+// For c9
+// server.listen(process.env.PORT, process.env.IP, function () {
+//   console.log('JSON Server is running')
+// })
 
-server.listen(process.env.PORT, process.env.IP, function () {
-  console.log('JSON Server is running')
+server.listen(process.env.PORT, function () {
+   console.log('JSON Server is running')
 })
