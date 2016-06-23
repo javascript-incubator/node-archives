@@ -1,4 +1,4 @@
 ## Routes Available
 
-* gameofthrones/:seasonno/:episodeno
-* flash/
+* `gameofthrones/:seasonno/:episodeno`
+* `flash/`
