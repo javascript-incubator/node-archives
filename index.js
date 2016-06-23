@@ -11,6 +11,6 @@ server.use('/gameofthrones', got)
 //   console.log('JSON Server is running')
 // })
 
-server.listen(process.env.PORT, function () {
+server.listen(process.env.PORT || 8080, function () {
    console.log('JSON Server is running')
 })
