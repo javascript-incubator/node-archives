@@ -22,4 +22,8 @@ router.get('/:location', function (req, res, next) {
   .catch(err => console.log(err))
 })
 
+router.get('/', function (req, res, next) {
+  res.send({'Hello': 'Welcome to Faker'})
+})
+
 module.exports = router
