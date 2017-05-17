@@ -11,7 +11,7 @@
 
 _Create FakeAPI Server from JSON_
 
-Currently at <https://faker-ojirvmlcrz.now.sh>
+Currently at <https://faker.now.sh>
 
 ## Endpoints 🤘
 
