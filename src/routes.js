@@ -10,6 +10,6 @@ const responseMiddleware = (req, res) => res.json(req.responseValue);
 ['mine', 'chain'].map(x => router.get(x, cokecoin[x]), responseMiddleware);
 
 // POSTs
-['transactions'].map(x => router.post(x, cokecoin[x]), responseMiddleware);
+['transaction'].map(x => router.post(x, cokecoin[x]), responseMiddleware);
 
 export default router;

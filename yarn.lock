@@ -672,12 +672,17 @@
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@lectro/enhancer-buildutils/-/enhancer-buildutils-0.1.0.tgz#b26c75839118132dcc989298a1bfc764d260d105"
 
-"@lectro/enhancer-commonutils@1.1.2-alpha-10":
-  version "1.1.2-alpha-10"
-  resolved "https://registry.npmjs.org/@lectro/enhancer-commonutils/-/enhancer-commonutils-1.1.2-alpha-10.tgz#04675209fc368e8b8dccfb652cc6f69175f1015c"
+"@lectro/enhancer-commonutils@1.1.2-alpha-11":
+  version "1.1.2-alpha-11"
+  resolved "https://registry.npmjs.org/@lectro/enhancer-commonutils/-/enhancer-commonutils-1.1.2-alpha-11.tgz#59fee955bec02753f4419daf768df4c75f566eaa"
+  dependencies:
+    node-fetch "2.1.1"
+
+"@lectro/enhancer-types@0.1.0-alpha-1":
+  version "0.1.0-alpha-1"
+  resolved "https://registry.npmjs.org/@lectro/enhancer-types/-/enhancer-types-0.1.0-alpha-1.tgz#d4fb79d826255ea6fe0f85b96f350e3e9f3be32f"
   dependencies:
     daggy "^1.2.0"
-    node-fetch "^2.1.1"
 
 "@webassemblyjs/ast@1.4.3":
   version "1.4.3"
@@ -4214,9 +4219,9 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-fetch@^2.1.1:
-  version "2.1.2"
-  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
+node-fetch@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.1.1.tgz#369ca70b82f50c86496104a6c776d274f4e4a2d4"
 
 node-gyp@^3.3.1:
   version "3.6.2"

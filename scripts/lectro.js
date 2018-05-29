@@ -1,10 +1,13 @@
 const EnhancerCommonutils = require('@lectro/enhancer-commonutils');
 const EnhancerBuildutils = require('@lectro/enhancer-buildutils');
+const EnhancerTypes = require('@lectro/enhancer-types');
 const Lectro = require('@lectro/core');
 const WebpackBar = require('webpackbar'); // eslint-disable-line
 
 const Asynchroniser = new Lectro('node');
+
 module.exports = Asynchroniser.use(EnhancerCommonutils)
+  .use(EnhancerTypes)
   .use(EnhancerBuildutils)
   .extend(config => {
     config.plugins.push(new WebpackBar({ name: 'Cokecoin' }));
