@@ -5,7 +5,7 @@ class CokeCoin {
     this.blockchain = CokeChain().createNewBlock(100, 1);
   }
 
-  getChain() {
+  chain() {
     return (req, res, next) => {
       req.responseValue = {
         message: 'Get Chain',
@@ -34,7 +34,7 @@ class CokeCoin {
     };
   }
 
-  newTransaction() {
+  transaction() {
     return (req, res, next) => {
       const { sender, recipient, amount } = req.body;
       this.blockchain = this.blockchain.createNewTransaction(sender, recipient, amount);

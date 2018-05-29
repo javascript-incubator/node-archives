@@ -1,16 +1,15 @@
 import { Router } from 'express';
-import CokeCoin from './factories/cokecoin';
+import CokeCoin from './internals/cokecoin';
 
 const router = new Router();
-
 const cokecoin = new CokeCoin();
 
 const responseMiddleware = (req, res) => res.json(req.responseValue);
 
-router.post('/transactions', cokecoin.newTransaction(), responseMiddleware);
+// GETs
+['mine', 'chain'].map(x => router.get(x, cokecoin[x]), responseMiddleware);
 
-router.get('/mine', cokecoin.mine(), responseMiddleware);
-
-router.get('/chain', cokecoin.getChain(), responseMiddleware);
+// POSTs
+['transactions'].map(x => router.post(x, cokecoin[x]), responseMiddleware);
 
 export default router;
