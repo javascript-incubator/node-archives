@@ -1,5 +1,9 @@
 # COKE 💰
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 _A New Coin on the streets._
 
 **Cokecoin is a minimal Blockchain and Blockchain Server implemented in Node.**
@@ -16,18 +20,18 @@ _A New Coin on the streets._
 
 ### Usage
 
-- *GET* `/chain` to get chain.
-- *POST* `/transactions` to create transactions.
+- _GET_ `/chain` to get chain.
+- _POST_ `/transactions` to create transactions.
 
 ```json
 {
-	"sender": "Naruto",
-	"recipient": "Sasuke",
-	"amount": 90
+  "sender": "Naruto",
+  "recipient": "Sasuke",
+  "amount": 90
 }
 ```
 
-- *GET* `/mine` to mine new block.
+- _GET_ `/mine` to mine new block.
 
 ### Internals
 
@@ -35,7 +39,7 @@ _A New Coin on the streets._
 
 - Currently using Simple Cycle until the solution is found. i.e.
 
-<img src="pow.png">
+<img src="pow.png" height="200px">
 
 #### Hasing Algo
 
@@ -44,8 +48,4 @@ _A New Coin on the streets._
 
 All the functions used are from [cypto](https://nodejs.org/api/crypto.html) included in node.
 
-**No external dependency is used to achieve blockchain creation in node** _Only Express for HTTP server_ 
-
-### License
-
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+**No external dependency is used to achieve blockchain creation in node** _Only Express for HTTP server_
