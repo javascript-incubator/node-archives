@@ -22,12 +22,16 @@ class CokeCoin {
       const proof = this.blockchain.proofOfWork(lastProof);
       const previousHash = this.blockchain.hash(lastProof);
 
-      this.blockchain =
-        this.blockchain.createNewTransaction('0', process.env.NODE_NAME, 1).createNewBlock(proof, previousHash);
+      this.blockchain = this.blockchain
+        .createNewTransaction('0', process.env.NODE_NAME, 1)
+        .createNewBlock(proof, previousHash);
 
-      const responseValue = Object.assign({
-        message: 'New Block mined',
-      }, this.blockchain.lastBlock());
+      const responseValue = Object.assign(
+        {
+          message: 'New Block mined',
+        },
+        this.blockchain.lastBlock(),
+      );
 
       req.responseValue = responseValue;
       return next();
@@ -37,9 +41,15 @@ class CokeCoin {
   transaction() {
     return (req, res, next) => {
       const { sender, recipient, amount } = req.body;
-      this.blockchain = this.blockchain.createNewTransaction(sender, recipient, amount);
+      this.blockchain = this.blockchain.createNewTransaction(
+        sender,
+        recipient,
+        amount,
+      );
       const responseValue = {
-        message: `Transaction will be added to Block ${this.blockchain.lastBlock().index}`,
+        message: `Transaction will be added to Block ${
+          this.blockchain.lastBlock().index
+        }`,
       };
       req.responseValue = responseValue;
       return next();

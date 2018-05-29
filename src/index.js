@@ -14,7 +14,7 @@ app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false })).use(routes);
 
 // start app
-app.listen(serverConfig.port, (error) => {
+app.listen(serverConfig.port, error => {
   if (error) {
     console.log('Something Went Wrong');
     return;
