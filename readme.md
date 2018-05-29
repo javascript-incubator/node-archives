@@ -33,15 +33,10 @@ _A New Coin on the streets._
 
 #### Proof of Work
 
-- Currently using Simple Cycle until the solution is found.
+- Currently using Simple Cycle until the solution is found. i.e.
 
-```js
-let proof = 0;
-while (!verified) {
-    proof += 1;
-}
+<img src="pow.png">
 
-```
 #### Hasing Algo
 
 - SHA256
