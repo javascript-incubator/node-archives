@@ -41,7 +41,6 @@ CokeChain.prototype.validProof = function(lastProof, proof) {
   const guessHash = createHmac(process.env.HASH_TYPE, process.env.CRYPTO_SECRET)
     .update(`${lastProof}${proof}`)
     .digest('hex');
-  console.log(guessHash.substr(0, 4), process.env.RESOLUTION_HASH);
   return guessHash.substr(0, 4) === process.env.RESOLUTION_HASH;
 };
 
