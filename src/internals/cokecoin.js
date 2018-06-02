@@ -1,4 +1,7 @@
+// import State from 'crocks/State';
 import CokeChain from './cokechain';
+
+// const { get, put } = State;
 
 class CokeCoin {
   constructor() {
