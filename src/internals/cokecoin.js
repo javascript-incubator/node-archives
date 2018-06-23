@@ -1,18 +1,24 @@
-// import State from 'crocks/State';
+import { set, view, lensProp, lensPath, compose } from 'ramda';
 import CokeChain from './cokechain';
-
-// const { get, put } = State;
 
 class CokeCoin {
   constructor() {
-    this.blockchain = CokeChain().createNewBlock(100, 1);
+    this.state = {
+      blockchain: CokeChain().createNewBlock(100, 1),
+    };
   }
+
+  updateState = val => {
+    const nextState = set(lensProp('blockchain'), val, this.state);
+    this.state = nextState;
+    return this.state;
+  };
 
   chain() {
     return (req, res, next) => {
       req.responseValue = {
         message: 'Get Chain',
-        chain: this.blockchain.chain,
+        chain: view(lensPath(['blockchain', 'chain']), this.state),
       };
       return next();
     };
@@ -20,20 +26,28 @@ class CokeCoin {
 
   mine() {
     return (req, res, next) => {
-      const lastBlock = this.blockchain.lastBlock();
-      const lastProof = lastBlock.proof;
-      const proof = this.blockchain.proofOfWork(lastProof);
-      const previousHash = this.blockchain.hash(lastProof);
+      const lastProof = compose(
+        view(lensProp('proof')),
+        view(lensPath(['blockchain', 'lastBlock'])),
+      )(this.state);
 
-      this.blockchain = this.blockchain
+      const proof = view(lensPath(['blockchain', 'proofOfWork']), this.state)(
+        lastProof,
+      );
+
+      const previousHash = view(lensPath(['blockchain', 'hash']), this.state)(
+        lastProof,
+      );
+
+      const newChain = view(lensProp('blockchain'), this.state)
         .createNewTransaction('0', process.env.NODE_NAME, 1)
         .createNewBlock(proof, previousHash);
 
+      this.updateState(newChain);
+
       const responseValue = Object.assign(
-        {
-          message: 'New Block mined',
-        },
-        this.blockchain.lastBlock(),
+        { message: 'New Block mined' },
+        view(lensProp(['blockchain', 'lastBlock']), this.state)(),
       );
 
       req.responseValue = responseValue;
@@ -44,15 +58,16 @@ class CokeCoin {
   transaction() {
     return (req, res, next) => {
       const { sender, recipient, amount } = req.body;
-      this.blockchain = this.blockchain.createNewTransaction(
-        sender,
-        recipient,
-        amount,
-      );
+      const newChain = view(
+        lensPath(['blockchain', 'createNewTransaction']),
+        this.state,
+      )(sender, recipient, amount);
+
+      this.updateState(newChain);
       const responseValue = {
         message: `Transaction will be added to Block ${
-          this.blockchain.lastBlock().index
-        }`,
+          view(lensPath(['blockchain', 'lastBlock']), this.state)().index
+          }`,
       };
       req.responseValue = responseValue;
       return next();
